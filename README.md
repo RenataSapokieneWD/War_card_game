@@ -13,4 +13,4 @@ War_card_game
 5. Finally creates an instance of the WarGame class and starts the game.
 
 Such implementation lets to encapsulate the behavior and data of cards, players, and the game itself. Each class is responsible for specific functionality.
-The game is automated with no user input required for moves, and the output will be printed to the console.
+The game is designed to ask for player's 1 input of his/her rank and suit, player 2 is a computer and selects the random card from it's deck. The result is displayed in the console and then need to choose either exit the game or continue.
