@@ -49,10 +49,23 @@ class WarGame:
         self.deal_cards()
 
     def deal_cards(self):
-
+        while self.deck.cards:
+            self.player1.collect_cards([self.deck.deal()])
+            self.player2.collect_cards([self.deck.deal()])
 
     def get_player_card(self):
-
+        while True:
+            rank = input("Enter the rank of the card: 2-10, J, Q, K, A.",).strip().lower()
+            suit = input("Enter the suit: Hearts, Diamonds, Clubs, Spades",).strip().capitalize()
+            if rank in Cards.ranks and suit in Cards.suits:
+                player_card = Card(rank,suit)
+                if player_card in self.player1.hand:
+                    self.player1.hand.remove(player_card)
+                    return player_card
+                else:
+                    print("You do not have this card in your hand. Try again.")
+            else:
+                print("Invalid rank or suit. Try again.")
 
     def play_round(self):
 
