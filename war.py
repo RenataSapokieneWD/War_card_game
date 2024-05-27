@@ -55,9 +55,9 @@ class WarGame:
 
     def get_player_card(self):
         while True:
-            rank = input("Enter the rank of the card: 2-10, J, Q, K, A.",).strip().lower()
-            suit = input("Enter the suit: Hearts, Diamonds, Clubs, Spades",).strip().capitalize()
-            if rank in Cards.ranks and suit in Cards.suits:
+            rank = input("Enter the rank of the card: 2-10, J, Q, K, A : ",).strip().upper()
+            suit = input("Enter the suit: Hearts, Diamonds, Clubs, Spades: ",).strip().capitalize()
+            if rank in Card.ranks and suit in Card.suits:
                 player_card = Card(rank,suit)
                 if player_card in self.player1.hand:
                     self.player1.hand.remove(player_card)
@@ -68,16 +68,27 @@ class WarGame:
                 print("Invalid rank or suit. Try again.")
 
     def play_round(self):
-
+            player_card = self.get_player_card()
+            computer_card = Deck().deal()
+            round_cards = []
+            round_cards.append([player_card, computer_card])
+            if player_card > computer_card:
+                Player("Player 1").collect_cards(round_cards) #need stack where to keep won cards
+            elif player_card < computer_card:
+                Player("Computer").collect_cards(round_cards)  #need stack where to keep won cards
+            else:
+                self.handle_war()
+        
+        
 
     def handle_war(self, p1_cards, p2_cards):
-
+        pass
 
     def determine_winner(self):
-
+        pass
 
     def play_game(self):
-
+        self.play_round()
 
 
 if __name__ == "__main__":
